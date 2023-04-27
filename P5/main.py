@@ -69,16 +69,16 @@ print(f'\t\t\\ {round(y, 2)}, {keys[-1]} < x')
 # Группированная выборка
 h = (max(input_data) - min(input_data)) / (1 + log(len(input_data), 2))
 # left_border = sorted_input_data[0] -h/2
-left_border = round(sorted_input_data[0],2)
-next_left_border = round(left_border + h,2)
+left_border = round(sorted_input_data[0], 2)
+next_left_border = round(left_border + h, 2)
 grouped_selection = {left_border: 0}
 for i in sorted_input_data:
     if left_border <= i < next_left_border:
         grouped_selection[left_border] += 1 / n
     else:
         grouped_selection[next_left_border] = 1/n
-        left_border = round(next_left_border,2)
-        next_left_border = round(left_border + h,2)
+        left_border = round(next_left_border, 2)
+        next_left_border = round(left_border + h, 2)
 
 table = PrettyTable()
 table.field_names = (f'[{round(key,2)}; {round(key+h,2)})' for key in grouped_selection.keys())
@@ -97,11 +97,11 @@ mpl.plot(list(grouped_selection.keys()), list(grouped_selection.values()), c='bl
 
 # Гистограмма
 mpl.subplot(5, 1, 5)
+mpl.xlabel("x")
+mpl.ylabel("p")
 mpl.grid(c='black')
 mpl.title("Гистограмма частот")
 mpl.bar(list(map(lambda z: z + h/2, grouped_selection.keys())), list(grouped_selection.values()), width=h)
 x_ticks = list(grouped_selection.keys()) + [round(list(grouped_selection.keys())[-1] + h, 2)]
 mpl.xticks(x_ticks, x_ticks)
 mpl.show()
-
-print(grouped_selection)
