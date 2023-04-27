@@ -67,6 +67,7 @@ for i in range(n - 1):
 print(f'\t\t\\ {round(y, 2)}, {keys[-1]} < x')
 
 # Группированная выборка
+# С использованием правила Стёрджеса
 h = (max(input_data) - min(input_data)) / (1 + log(len(input_data), 2))
 # left_border = sorted_input_data[0] -h/2
 left_border = round(sorted_input_data[0], 2)
